@@ -1,12 +1,10 @@
-// import React from "react";
-// function User(props) {
-//   return (
-//     <div>
-//       <span> {props.data.name} </span>
-//       <span> {props.data.email} </span>
-//       <span> {props.data.contact} </span>
-//     </div>
-//   );
-// }
+import React, { forwardRef } from "react";
 
-// export default User;
+function User(props, ref) {
+  return (
+    <div>
+      <input type="text" ref={ref}></input>
+    </div>
+  );
+}
+export default User;
