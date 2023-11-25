@@ -1,15 +1,16 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useEffect, useRef } from "react";
 function User(props) {
-  const navigate = useNavigate();
+  const lastVal = useRef();
+  useEffect(() => {
+    lastVal.current = props.count;
+  });
 
-  console.warn(props.params.id);
-
+  const previousProps = lastVal.current;
   return (
     <div>
-      <h1>Hi this is user no {props.params.id}</h1>
-      <h1>Hi this is {props.params.name}</h1>
+      <h1>Cuurent Value {props.count}</h1>
+      <h1>Previous Value{previousProps}</h1>
     </div>
   );
 }
