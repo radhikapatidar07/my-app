@@ -1,33 +1,36 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react";
-import User from "./User";
+import CommonContext from "./component/CommonContext";
+import Main from "./component/Main";
+import UpdateButton from "./component/UpdateButton";
+import Header from "./component/Header";
+import Footer from "./component/Footer";
+import React from "react";
 
-function App() {
-  const [data, setData] = useState({ name: "Radhika", age: 21 });
-  return (
-    <div className="App">
-      <h1>State object with Hooks</h1>
-      <input
-        type="text"
-        placeholder="Enter name"
-        value={data.name}
-        onChange={(e) => {
-          setData({ ...data, name: e.target.value });
-        }}
-      />
-      <input
-        type="text"
-        placeholder="Enter age"
-        value={data.age}
-        onChange={(e) => {
-          setData({ ...data, name: e.target.value });
-        }}
-      />
-      <h1>{data.name}</h1>
-      <h1>{data.age}</h1>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.updateColor = (color) => {
+      this.setState({
+        color: color,
+      });
+    };
+    this.state = {
+      color: "green",
+      updateColor: this.updateColor,
+    };
+  }
+  render() {
+    return (
+      <CommonContext.Provider value={this.state}>
+        <Header />
+        <h1>Complete and easy exam for Context API</h1>
+        <Main />
+        <UpdateButton />
+        <Footer />
+      </CommonContext.Provider>
+    );
+  }
 }
 
 export default App;
